@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import User from './pages/User';
+import NotFound from './pages/NotFound';
+import About from './pages/About';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BscState from './context/bscContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BscState>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}>
+              <Route path="address/:text" element={<User />} />
+              <Route path="notfound" element={<NotFound />} />
+            </Route>
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Router>
+      </BscState>
+    </>
   );
 }
 
