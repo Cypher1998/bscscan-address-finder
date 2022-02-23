@@ -4,6 +4,14 @@ import { bscReducer } from './bscReducer';
 
 export const BscContext = createContext();
 
+let bscToken;
+
+if (process.env.NODE_ENV !== 'production') {
+  bscToken = process.env.REACT_APP_BSC_TOKEN;
+} else {
+  bscToken = process.env.BSC_TOKEN;
+}
+
 const BscState = ({ children }) => {
   const initialState = {
     balance: {},
@@ -21,19 +29,19 @@ const BscState = ({ children }) => {
 
     await Promise.all([
       fetch(
-        `https://api.bscscan.com/api?module=account&action=balance&address=${text}&apikey=${process.env.REACT_APP_BSC_TOKEN}`
+        `https://api.bscscan.com/api?module=account&action=balance&address=${text}&apikey=${bscToken}`
       ),
 
       fetch(
-        `https://api.bscscan.com/api?module=account&action=tokentx&address=${text}&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=${process.env.REACT_APP_BSC_TOKEN}`
+        `https://api.bscscan.com/api?module=account&action=tokentx&address=${text}&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=${bscToken}`
       ),
       fetch(
-        `https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=${process.env.REACT_APP_BSC_TOKEN}`
+        `https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=${bscToken}`
       ),
       fetch(
         `https://api.bscscan.com/api?module=account&action=tokennfttx&address=${text}&&page=1
         &offset=100&startblock=0&endblock=999999999
-        &sort=asc&apikey=${process.env.REACT_APP_BSC_TOKEN}`
+        &sort=asc&apikey=${bscToken}`
       ),
     ])
       .then((responses) => {
