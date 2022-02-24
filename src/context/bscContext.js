@@ -6,11 +6,7 @@ export const BscContext = createContext();
 
 let bscToken;
 
-if (process.env.NODE_ENV !== 'production') {
-  bscToken = process.env.REACT_APP_BSC_TOKEN;
-} else {
-  bscToken = process.env.BSC_TOKEN;
-}
+bscToken = process.env.REACT_APP_BSC_TOKEN;
 
 const BscState = ({ children }) => {
   const initialState = {

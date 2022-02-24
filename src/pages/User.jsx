@@ -37,7 +37,7 @@ const User = () => {
                 <p>
                   Oops! The search string you entered was: <span>{text}.</span>{' '}
                 </p>
-                <p>This is an invalid address.</p>
+                <p>This is an invalid address. Enter a valid address.</p>
               </section>
             </>
           ) : (
