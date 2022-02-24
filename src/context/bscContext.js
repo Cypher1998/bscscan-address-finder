@@ -21,7 +21,7 @@ const BscState = ({ children }) => {
 
     await Promise.all([
       fetch(
-        `https://api.bscscan.com/api?module=account&action=balance&address=${text}&apikey=${bscToken}`
+        `https://api.bscscan.com/api?module=account&action=balance&address=${text}&apikey=${process.env.REACT_APP_BSC_TOKEN}`
       ),
 
       fetch(
