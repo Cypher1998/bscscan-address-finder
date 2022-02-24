@@ -4,10 +4,6 @@ import { bscReducer } from './bscReducer';
 
 export const BscContext = createContext();
 
-let bscToken;
-
-bscToken = process.env.REACT_APP_BSC_TOKEN;
-
 const BscState = ({ children }) => {
   const initialState = {
     balance: {},
@@ -29,15 +25,15 @@ const BscState = ({ children }) => {
       ),
 
       fetch(
-        `https://api.bscscan.com/api?module=account&action=tokentx&address=${text}&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=${bscToken}`
+        `https://api.bscscan.com/api?module=account&action=tokentx&address=${text}&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=${process.env.REACT_APP_BSC_TOKEN}`
       ),
       fetch(
-        `https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=${bscToken}`
+        `https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=${process.env.REACT_APP_BSC_TOKEN}`
       ),
       fetch(
         `https://api.bscscan.com/api?module=account&action=tokennfttx&address=${text}&&page=1
         &offset=100&startblock=0&endblock=999999999
-        &sort=asc&apikey=${bscToken}`
+        &sort=asc&apikey=${process.env.REACT_APP_BSC_TOKEN}`
       ),
     ])
       .then((responses) => {
