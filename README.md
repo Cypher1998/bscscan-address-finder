@@ -9,4 +9,4 @@ Also, this application is not in any away affliated to the binance smart chain.
 
 ### App Link on Netlify
 
-###### cypher-bscscan-app.netlify.app
+###### https://cypher-bscscan-app.netlify.app
