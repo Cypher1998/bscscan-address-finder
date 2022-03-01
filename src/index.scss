@@ -124,7 +124,7 @@ section.search-box {
         bottom-left-radius: 0;
       }
       right: 10px;
-      flex-basis: 12%;
+      min-width: 55px;
       height: 47px;
       border: 1px solid $multi-use-color;
       cursor: pointer;
@@ -137,7 +137,7 @@ section.search-box {
       }
 
       @media (min-width: 760px) {
-        flex-basis: 8%;
+        min-width: 70px;
       }
     }
   }
@@ -152,7 +152,7 @@ section.not-found {
   display: grid;
   grid: {
     template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    // gap: 1rem;
   }
 
   div:nth-of-type(1) {
@@ -181,7 +181,7 @@ section.not-found {
   div:nth-of-type(3) {
     grid: {
       column: 1/4;
-      row: 3/4;
+      row: 3;
     }
     align-self: center;
 
@@ -205,7 +205,8 @@ section.not-found {
 
   img {
     grid-column: 4/5;
-    align-self: center;
+    grid-row: 3/4;
+    align-self: start;
     width: 180px;
 
     @media (min-width: 40rem) {
@@ -236,6 +237,7 @@ section.user-address {
   color: black;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  overflow-wrap: break-word;
 
   .address {
     border-bottom: 2px solid rgb(77, 76, 76);
@@ -243,6 +245,11 @@ section.user-address {
 
     p {
       font-size: 1.3rem;
+    }
+
+    span {
+      white-space: pre-wrap;
+      font-size: 0.85rem;
     }
   }
   h4 {
